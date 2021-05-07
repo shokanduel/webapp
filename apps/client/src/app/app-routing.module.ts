@@ -4,7 +4,7 @@ import { AuthGuard } from './auth.guard';
 import { LoginComponent } from './login/login.component';
 import { UnauthGuard } from './unauth.guard';
 
-const routes: Routes = [
+export const routes: Routes = [
     {
         path: 'login',
         component: LoginComponent,
