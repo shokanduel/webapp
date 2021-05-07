@@ -1,22 +1,24 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './auth.guard';
 import { LoginComponent } from './login/login.component';
+import { UnauthGuard } from './unauth.guard';
 
 const routes: Routes = [
-    { 
-        path: 'login', 
+    {
+        path: 'login',
         component: LoginComponent,
-        canActivate: []
+        canActivate: [UnauthGuard]
     },
-    { 
-        path: 'dashboard', 
+    {
+        path: 'dashboard',
         loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule),
-        canActivate: []
+        canActivate: [AuthGuard]
     },
-    { 
-        path: 'duel-room', 
+    {
+        path: 'duel-room',
         loadChildren: () => import('./duel-room/duel-room.module').then(m => m.DuelRoomModule),
-        canActivate: []
+        canActivate: [AuthGuard]
     }
 ]
 
