@@ -1,13 +1,15 @@
-import { Component } from '@angular/core';
-import { TestBed, async } from '@angular/core/testing';
-import { HttpClientModule } from '@angular/common/http';
+import { TestBed, waitForAsync } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import { APP_BASE_HREF } from '@angular/common';
+import { RouterTestingModule } from '@angular/router/testing';
+import { routes } from './app-routing.module';
 
 describe('AppComponent', () => {
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [AppComponent],
-      imports: [HttpClientModule],
+      imports: [RouterTestingModule.withRoutes(routes)],
+      providers: [{provide: APP_BASE_HREF, useValue: '/'}]
     }).compileComponents();
   }));
 
