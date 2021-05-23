@@ -25,8 +25,10 @@ import { AppService } from './app.service';
         // only sycnronize in dev
         synchronize: !environment.production
       }),
-      inject: [ConfigService]
-    })
+      inject: [ConfigService],
+      ServeStaticModule.forRoot({
+        rootPath: join(__dirname, '..', 'client'),
+      }),
   ],
   controllers: [AppController],
   providers: [AppService],
