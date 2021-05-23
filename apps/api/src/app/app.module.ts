@@ -2,9 +2,10 @@ import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { environment } from '../environments/environment';
-
+import { ServeStaticModule } from '@nestjs/serve-static';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { join } from 'path';
 
 @Module({
   imports: [
@@ -26,9 +27,10 @@ import { AppService } from './app.service';
         synchronize: !environment.production
       }),
       inject: [ConfigService],
-      ServeStaticModule.forRoot({
-        rootPath: join(__dirname, '..', 'client'),
-      }),
+    }),
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname, '..', 'client'),
+    }),
   ],
   controllers: [AppController],
   providers: [AppService],
