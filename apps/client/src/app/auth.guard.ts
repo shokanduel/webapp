@@ -11,8 +11,8 @@ import { Observable } from 'rxjs';
 })
 export class AuthGuard implements CanActivate {
   canActivate(
-    _route: ActivatedRouteSnapshot,
-    _state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    _route: ActivatedRouteSnapshot, _state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     return true;
   }
 
